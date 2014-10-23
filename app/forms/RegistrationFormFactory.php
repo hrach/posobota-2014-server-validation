@@ -3,6 +3,7 @@
 namespace Skrasek\Posobota\FormsDemo;
 
 use Nette\Application\UI\Form;
+use Nextras\Forms\Rendering\Bs3FormRenderer;
 
 
 final class RegistrationFormFactory
@@ -16,6 +17,7 @@ final class RegistrationFormFactory
 
 		$form->addSubmit('register', 'Registrovat');
 		$form->onSuccess[] = [$this, 'processRegistration'];
+		$form->setRenderer(new Bs3FormRenderer());
 		return $form;
 	}
 
