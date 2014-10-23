@@ -1,0 +1,36 @@
+{
+	"name": "nextras/forms",
+	"type": "library",
+	"description": "Extra form components for Nette Framework.",
+	"keywords": ["nette", "form"],
+	"license": ["BSD-3-Clause", "GPL-2.0", "GPL-3.0"],
+	"authors": [
+		{
+			"name": "David Grudl",
+			"homepage": "http://davidgrudl.com"
+		},
+		{
+			"name": "Jan Škrášek",
+			"homepage": "http://jan.skrasek.com"
+		},
+		{
+			"name": "Nextras Community",
+			"homepage": "https://github.com/nextras/forms/graphs/contributors"
+		}
+	],
+	"require": {
+		"php": "~5.4",
+		"nette/application": "~2.2",
+		"nette/component-model": "~2.2",
+		"nette/forms": "~2.2",
+		"nette/utils": "~2.2"
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "1.4-dev"
+		}
+	},
+	"autoload": {
+		"psr-4": { "Nextras\\Forms\\": "src/" }
+	}
+}

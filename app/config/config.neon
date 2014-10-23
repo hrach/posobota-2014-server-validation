@@ -1,0 +1,11 @@
+services:
+	router: @routerFactory::create()
+	routerFactory: Skrasek\Posobota\RouterFactory
+
+	# forms
+	- Skrasek\Posobota\FormsDemo\RegistrationFormFactory
+
+nette:
+	application:
+		mapping:
+			*: Skrasek\Posobota\FormsDemo\*Module\*Presenter

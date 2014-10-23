@@ -1,0 +1,11 @@
+{
+	"config": {
+		"preferred-install": "dist"
+	},
+	"require": {
+		"php": "~5.5",
+		"nette/nette": "~2.2",
+		"nextras/forms": "~1.4",
+		"kdyby/autowired": "~1.2"
+	}
+}
