@@ -12,7 +12,9 @@ final class RegistrationFormFactory
 	public function create()
 	{
 		$form = new Form();
-		$form->addText('email', 'E-mail');
+		$form->addText('email', 'E-mail')
+			->addRule($form::EMAIL, 'Zadej email ve správném formátu.');
+
 		$form->addPassword('password', 'Password');
 
 		$form->addSubmit('register', 'Registrovat');
