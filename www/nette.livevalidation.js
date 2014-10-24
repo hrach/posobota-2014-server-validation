@@ -328,7 +328,7 @@ Nette.validateControl = function(elem, rules, onlyCheck) {
 			el = el[0];
 		}
 
-		var success = Nette.validateRule(el, rule.op, rule.arg);
+		var success = Nette.validateRule(el, rule);
 		if (success === null) {
 			continue;
 		}
@@ -480,7 +480,9 @@ Nette.expandRuleArgument = function(elem, arg) {
 /**
  * Validates single rule.
  */
-Nette.validateRule = function(elem, op, arg) {
+Nette.validateRule = function(elem, rule) {
+	var op = rule.op;
+	var arg = rule.arg;
 	var val = Nette.getEffectiveValue(elem);
 
 	if (op.charAt(0) === ':') {
@@ -493,7 +495,7 @@ Nette.validateRule = function(elem, op, arg) {
 	for (var i = 0, len = arr.length; i < len; i++) {
 		arr[i] = Nette.expandRuleArgument(elem, arr[i]);
 	}
-	return Nette.validators[op] ? Nette.validators[op](elem, Nette.isArray(arg) ? arr : arr[0], val) : null;
+	return Nette.validators[op] ? Nette.validators[op](elem, Nette.isArray(arg) ? arr : arr[0], val, rule) : null;
 };
 
 
