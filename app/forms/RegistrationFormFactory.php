@@ -3,6 +3,7 @@
 namespace Skrasek\Posobota\FormsDemo;
 
 use Nette\Application\UI\Form;
+use Nette\Forms\IControl;
 use Nextras\Forms\Rendering\Bs3FormRenderer;
 
 
@@ -12,8 +13,12 @@ final class RegistrationFormFactory
 	public function create()
 	{
 		$form = new Form();
-		$form->addText('email', 'E-mail')
-			->addRule($form::EMAIL, 'Zadej email ve správném formátu.');
+
+		$input = $form['email'] = new ServerValidatedTextInput('E-mail');
+		$input->addRule($form::EMAIL, 'Zadej email ve správném formátu.');
+		$input->addServerRule(function(IControl $control) {
+			return $control->getValue() !== 'jan@skrasek.com';
+		}, 'Zadaný e-mail již existuje.');
 
 		$form->addPassword('password', 'Password');
 
