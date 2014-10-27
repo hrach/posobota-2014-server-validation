@@ -1,8 +1,7 @@
 Nette.validators.serverValidate = function(elem, arg, val, rule) {
 	$.ajax({
-		url: arg,
+		url: arg.replace('__replace_me__', val),
 		dataType: "json",
-		data: {'serverValidatedTextInputValue': val},
 		success: function(result) {
 			$.data(elem, 'valid', result.valid);
 			$.data(elem, 'validMsg', result.msg);

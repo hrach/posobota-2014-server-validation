@@ -30,19 +30,17 @@ class ServerValidatedTextInput extends TextInput implements ISignalReceiver
 			$rules = $el->{'data-nette-rules'};
 			$rules[] = [
 				'op' => 'serverValidate',
-				'arg' => $this->link('//serverValidate!'),
+				'arg' => $this->link('//serverValidate!', ['value' => '__replace_me__']),
 			];
-
 			$el->{'data-nette-rules'} = $rules;
 		}
 		return $el;
 	}
 
 
-	public function handleServerValidate()
+	public function handleServerValidate($value)
 	{
-		$presenter = $this->getPresenter();
-		$this->setValue($presenter->getParameter('serverValidatedTextInputValue'));
+		$this->setValue($value);
 
 		$payload = ['valid' => TRUE];
 		foreach ($this->serverValidators as $validator) {
@@ -52,7 +50,7 @@ class ServerValidatedTextInput extends TextInput implements ISignalReceiver
 			}
 		}
 
-		$presenter->sendJson($payload);
+		$this->getPresenter()->sendJson($payload);
 	}
 
 }
